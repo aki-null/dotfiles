@@ -1,0 +1,12 @@
+#!/bin/sh
+BASEDIR=$(cd "$(dirname "$0")"; pwd)
+
+cd $BASEDIR;
+git submodule init;
+git submodule update;
+
+ln -svF $BASEDIR/.gitconfig $HOME;
+ln -svF $BASEDIR/.screenrc $HOME;
+ln -svF $BASEDIR/.vim $HOME;
+ln -svF $BASEDIR/.vimrc $HOME;
+ln -svF $BASEDIR/.CFUserTextEncoding $HOME;
