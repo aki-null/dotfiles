@@ -32,8 +32,6 @@ set lazyredraw
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" Shared clipboard between vim and Mac
-set clipboard=unnamed
 
 filetype on
 filetype indent on
