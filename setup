@@ -16,7 +16,7 @@ The C extension must then be built, which can be done from the shell. If you
 use a typical |'runtimepath'| then the files were installed inside ~/.vim and
 you can build the extension with:
 
-  cd ~/.vim/bundle/command-t/ruby/command-t
+  cd ~/.vim/bundle/Commant-T/ruby/command-t
   ruby extconf.rb
   make
 
