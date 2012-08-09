@@ -24,10 +24,6 @@ set incsearch
 set hlsearch
 set number
 set numberwidth=5
-" highlight current line
-set cursorline
-" Speed things up a bit
-set lazyredraw
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
