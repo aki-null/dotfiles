@@ -33,10 +33,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
-" Solarized colour theme
 syntax on
-set background=light
-colorscheme solarized
 
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
