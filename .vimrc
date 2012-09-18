@@ -24,16 +24,28 @@ set incsearch
 set hlsearch
 set number
 set numberwidth=5
+set cursorline
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>:redraw!<cr>
+
+" Allow mouse in terminal vim
+if has('mouse')
+    set mouse=a
+endif
+set guioptions+=a
+set ttymouse=xterm2
+
 filetype on
 filetype indent on
 filetype plugin on
 
-syntax on
+syntax enable
+set background=light
+colorscheme solarized
 
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
