@@ -12,9 +12,9 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 60,
+                                    "basic.to_delayed_action_delay_milliseconds": 100,
                                     "basic.to_if_alone_timeout_milliseconds": 250,
-                                    "basic.to_if_held_down_threshold_milliseconds": 60
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
                                 },
                                 "to": [
                                     {
