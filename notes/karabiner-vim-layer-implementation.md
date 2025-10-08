@@ -78,8 +78,23 @@ Replicate TMK keyboard firmware's `ACTION_LAYER_TAP_KEY` behavior in Karabiner-E
 
 #### 2. Conditional Manipulators for Fast Typing (lines 73-~1500)
 
-Created to handle interruptions when another key is pressed while F is held. Structure for each key:
+Created to handle interruptions when another key is pressed while F is held.
 
+**Structure for vim navigation keys (h, j, k, l)** - Special immediate activation:
+```json
+{
+  "conditions": [
+    {"name": "f_pressed", "type": "variable_if", "value": 1}
+  ],
+  "from": {"key_code": "j"},
+  "to": [
+    {"set_variable": {"key_up_value": 0, "name": "vim_layer", "value": 1}},
+    {"key_code": "down_arrow"}
+  ]
+}
+```
+
+**Structure for all other keys**:
 ```json
 {
   "conditions": [
@@ -97,16 +112,15 @@ Created to handle interruptions when another key is pressed while F is held. Str
 ```
 
 **Keys covered**:
-- All letters (a-z): Lines ~130-1210
+- Vim navigation (h/j/k/l): Special immediate vim layer activation
+- All other letters (a-z): Standard fast typing fallback
 - Spacebar, numbers (0-9), punctuation: Lines 1211-~1500
 - Special keys: return, delete, backspace, tab, escape
 
-**Intended behavior**:
+**Behavior**:
 When F is held and another key is pressed:
-1. Check if f_pressed=1 and vim_layer≠1
-2. Send 'f' + the interrupting key
-3. Mark f_sent=1 to prevent double output
-4. Clear f_pressed
+- **h/j/k/l**: Immediately activate vim_layer and send arrow key (no 150ms delay!)
+- **Other keys**: Send 'f' + the key (fast typing mode)
 
 #### 3. Double-F Manipulator (lines 73-~120)
 
@@ -171,29 +185,33 @@ The add_more_keys.py script was run twice, creating duplicate conditional manipu
 
 ✅ **Single F tap**: "f" → Works (to_if_alone fires)
 ✅ **Hold F for vim layer**: Hold ≥150ms → Vim layer activates
+✅ **Immediate vim navigation**: F + h/j/k/l → Arrow keys work instantly without 150ms delay
 ✅ **Fast letter typing**: "fink" → Works (conditional manipulators for letters fire correctly)
 ✅ **Letters in general**: "fi", "fa", "ft" → All work correctly
 
-### Why Perfect Replication Is Impossible
+### Workaround for Immediate Vim Navigation
 
-**TMK**: Uses waiting buffer
+**Problem**: TMK's waiting buffer approach means vim navigation keys pressed during the 150ms tapping term get processed in layer context after the timeout. In Karabiner, using `to_if_held_down` means you must wait 150ms before pressing navigation keys.
+
+**Solution**: Special conditional manipulators for h/j/k/l that immediately activate vim_layer when pressed while f_pressed==1. This gives the same UX as TMK:
+
+**TMK behavior**:
 ```
 F down → [buffer: F] → wait 150ms
-I down → [buffer: F, I] → still waiting
-Decision: interrupted → send buffered [F, I]
+J down (at 50ms) → [buffer: F, J] → wait until 150ms
+150ms timeout → activate layer → process J as down_arrow
 ```
 
-**Karabiner**: Immediate processing
+**Karabiner workaround**:
 ```
-F down → f_pressed=1, schedule to_if_alone for 150ms
-I down → to_if_alone canceled, try to find matching manipulator
-        → Conditional manipulator should match but timing is critical
+F down → f_pressed=1
+J down (at 50ms) → conditional manipulator matches f_pressed==1
+                 → immediately set vim_layer=1, send down_arrow
 ```
 
-The race condition occurs when:
-1. `to_if_alone` cancellation modifies state
-2. Conditional manipulator evaluation happens
-3. Order/timing of these operations isn't guaranteed
+The UX feels identical: you can press navigation keys immediately after F without waiting.
+
+**Why this works**: h/j/k/l are only used for navigation in vim layer, never for fast typing like "fj" or "fk", so there's no downside to immediate activation.
 
 ### Additional Mod-Tap Keys
 
@@ -245,13 +263,11 @@ Added conditional manipulators for spacebar, numbers, punctuation, and special k
 
 The current implementation successfully handles:
 - Basic tap/hold functionality for F key
-- Vim layer activation after 150ms
+- **Immediate vim navigation**: h/j/k/l work instantly when pressed after F (matches TMK UX)
 - Fast typing with letters (a-z)
 
-But fails for:
+Known issues:
 - Fast typing with spacebar and possibly other non-letter keys
 - Double-F followed by space
 
-The root cause appears to be architectural differences between TMK's buffered approach and Karabiner's immediate event processing, combined with potential timing issues in how `to_if_alone` cancellation interacts with conditional manipulator evaluation.
-
-A perfect replication of TMK's behavior may not be achievable with Karabiner-Elements' current architecture.
+The vim navigation delay issue has been resolved by using special conditional manipulators for h/j/k/l that immediately activate the vim layer when pressed while F is held. This provides the same responsive UX as TMK's buffered approach, even though the underlying implementation is different.
