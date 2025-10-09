@@ -1026,11 +1026,6 @@
                                         "name": "f_pressed",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
-                                        "value": 1
                                     }
                                 ],
                                 "from": {
@@ -1038,22 +1033,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "2" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f2" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1061,11 +1049,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1074,22 +1057,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "3" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f3" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1097,11 +1073,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1110,22 +1081,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "4" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f4" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1133,11 +1097,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1146,22 +1105,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "5" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f5" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1169,11 +1121,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1182,22 +1129,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "6" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f6" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1205,11 +1145,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1218,22 +1153,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "7" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f7" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1241,11 +1169,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1254,22 +1177,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "8" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f8" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1277,11 +1193,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1290,22 +1201,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "9" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f9" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1313,11 +1217,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1326,22 +1225,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "0" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f10" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1349,11 +1241,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -1362,22 +1249,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "hyphen" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f11" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1386,11 +1266,6 @@
                                         "name": "f_pressed",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
-                                        "value": 1
                                     }
                                 ],
                                 "from": {
@@ -1398,22 +1273,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "equal_sign" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f12" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1962,11 +1830,6 @@
                                         "name": "f_pressed",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
-                                        "value": 1
                                     }
                                 ],
                                 "from": {
@@ -1974,22 +1837,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "2" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f2" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -1997,11 +1853,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2010,22 +1861,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "3" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f3" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2033,11 +1877,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2046,22 +1885,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "4" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f4" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2069,11 +1901,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2082,22 +1909,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "5" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f5" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2105,11 +1925,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2118,22 +1933,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "6" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f6" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2141,11 +1949,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2154,22 +1957,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "7" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f7" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2177,11 +1973,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2190,22 +1981,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "8" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f8" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2213,11 +1997,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2226,22 +2005,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "9" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f9" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2249,11 +2021,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2262,22 +2029,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "0" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f10" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2285,11 +2045,6 @@
                                     {
                                         "name": "f_pressed",
                                         "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
                                         "value": 1
                                     }
                                 ],
@@ -2298,22 +2053,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "hyphen" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f11" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
@@ -2322,11 +2070,6 @@
                                         "name": "f_pressed",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "name": "vim_layer",
-                                        "type": "variable_unless",
-                                        "value": 1
                                     }
                                 ],
                                 "from": {
@@ -2334,22 +2077,15 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
-                                    { "key_code": "f" },
-                                    { "key_code": "equal_sign" },
                                     {
                                         "set_variable": {
-                                            "name": "f_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "f_sent",
+                                            "key_up_value": 0,
+                                            "name": "vim_layer",
                                             "value": 1
                                         }
-                                    }
+                                    },
+                                    { "key_code": "f12" }
                                 ],
-                                "to_after_key_up": [{}],
                                 "type": "basic"
                             },
                             {
