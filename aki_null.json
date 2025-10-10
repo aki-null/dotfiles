@@ -2,7 +2,7 @@
   "title": "aki_null keymap (TMK)",
   "rules": [
     {
-      "description": "Left Control: Hold for Ctrl, Tap for Esc (150ms, lazy modifier)",
+      "description": "Left Control: Hold for Ctrl, Tap for Esc (150ms)",
       "manipulators": [
         {
           "type": "basic",
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "description": "Left Shift: Hold for Shift, Tap for ( (150ms, TMK behavior)",
+      "description": "Left Shift: Hold for Shift, Tap for ( (150ms)",
       "manipulators": [
         {
           "type": "basic",
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "description": "Right Shift: Hold for Shift, Tap for ) (150ms, TMK behavior)",
+      "description": "Right Shift: Hold for Shift, Tap for ) (150ms)",
       "manipulators": [
         {
           "type": "basic",
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "description": "F key Vim layer with waiting buffer (F becomes modifier for key repeat support)",
+      "description": "F key Vim layer",
       "manipulators": [
         {
           "type": "basic",
@@ -140,9 +140,6 @@
                 "name": "f_was_modifier",
                 "value": 1
               }
-            },
-            {
-              "key_code": "right_option"
             }
           ],
           "to_after_key_up": [
@@ -163,6 +160,11 @@
                   "type": "variable_if",
                   "name": "queued_a",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -179,6 +181,11 @@
                   "type": "variable_if",
                   "name": "queued_b",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -195,6 +202,11 @@
                   "type": "variable_if",
                   "name": "queued_c",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -211,6 +223,11 @@
                   "type": "variable_if",
                   "name": "queued_d",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -227,6 +244,11 @@
                   "type": "variable_if",
                   "name": "queued_e_1",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -243,6 +265,11 @@
                   "type": "variable_if",
                   "name": "queued_e_2",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -259,6 +286,11 @@
                   "type": "variable_if",
                   "name": "queued_e_3",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -275,6 +307,11 @@
                   "type": "variable_if",
                   "name": "queued_g",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -291,6 +328,11 @@
                   "type": "variable_if",
                   "name": "queued_h",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -307,6 +349,11 @@
                   "type": "variable_if",
                   "name": "queued_i",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -323,6 +370,11 @@
                   "type": "variable_if",
                   "name": "queued_j",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -339,6 +391,11 @@
                   "type": "variable_if",
                   "name": "queued_k",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -355,6 +412,11 @@
                   "type": "variable_if",
                   "name": "queued_l",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -371,6 +433,11 @@
                   "type": "variable_if",
                   "name": "queued_m",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -387,6 +454,11 @@
                   "type": "variable_if",
                   "name": "queued_n",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -403,6 +475,11 @@
                   "type": "variable_if",
                   "name": "queued_o_1",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -419,6 +496,11 @@
                   "type": "variable_if",
                   "name": "queued_o_2",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -435,6 +517,11 @@
                   "type": "variable_if",
                   "name": "queued_o_3",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -451,6 +538,11 @@
                   "type": "variable_if",
                   "name": "queued_p_1",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -467,6 +559,11 @@
                   "type": "variable_if",
                   "name": "queued_p_2",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -483,6 +580,11 @@
                   "type": "variable_if",
                   "name": "queued_p_3",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -499,6 +601,11 @@
                   "type": "variable_if",
                   "name": "queued_q",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -515,6 +622,11 @@
                   "type": "variable_if",
                   "name": "queued_r",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -531,6 +643,11 @@
                   "type": "variable_if",
                   "name": "queued_s_1",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -547,6 +664,11 @@
                   "type": "variable_if",
                   "name": "queued_s_2",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -563,6 +685,11 @@
                   "type": "variable_if",
                   "name": "queued_s_3",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -579,6 +706,11 @@
                   "type": "variable_if",
                   "name": "queued_t",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -595,6 +727,11 @@
                   "type": "variable_if",
                   "name": "queued_u",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -611,6 +748,11 @@
                   "type": "variable_if",
                   "name": "queued_v",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -627,6 +769,11 @@
                   "type": "variable_if",
                   "name": "queued_w",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -643,6 +790,11 @@
                   "type": "variable_if",
                   "name": "queued_x",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -659,6 +811,11 @@
                   "type": "variable_if",
                   "name": "queued_y",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -675,6 +832,11 @@
                   "type": "variable_if",
                   "name": "queued_z_1",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -691,6 +853,11 @@
                   "type": "variable_if",
                   "name": "queued_z_2",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -707,6 +874,11 @@
                   "type": "variable_if",
                   "name": "queued_z_3",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -723,6 +895,11 @@
                   "type": "variable_if",
                   "name": "queued_spacebar",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -733,12 +910,38 @@
               }
             },
             {
+              "key_code": "return_or_enter",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_return_or_enter",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_return_or_enter",
+                "value": 0
+              }
+            },
+            {
               "key_code": "comma",
               "conditions": [
                 {
                   "type": "variable_if",
                   "name": "queued_comma",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -755,6 +958,11 @@
                   "type": "variable_if",
                   "name": "queued_period",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -771,6 +979,11 @@
                   "type": "variable_if",
                   "name": "queued_slash",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -787,6 +1000,11 @@
                   "type": "variable_if",
                   "name": "queued_semicolon",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -803,6 +1021,11 @@
                   "type": "variable_if",
                   "name": "queued_quote",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -819,6 +1042,11 @@
                   "type": "variable_if",
                   "name": "queued_open_bracket",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
@@ -835,12 +1063,311 @@
                   "type": "variable_if",
                   "name": "queued_close_bracket",
                   "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
                 }
               ]
             },
             {
               "set_variable": {
                 "name": "queued_close_bracket",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "1",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_1",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_1",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "2",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_2",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_2",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "3",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_3",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_3",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "4",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_4",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_4",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "5",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_5",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_5",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "6",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_6",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_6",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "7",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_7",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_7",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "8",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_8",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_8",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "9",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_9",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_9",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "0",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_0",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_0",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "hyphen",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_hyphen",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_hyphen",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "equal_sign",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_equal_sign",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_equal_sign",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "backslash",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_backslash",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_backslash",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "grave_accent_and_tilde",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "queued_grave_accent_and_tilde",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_grave_accent_and_tilde",
                 "value": 0
               }
             },
@@ -861,11 +1388,1591 @@
                 "name": "f_was_modifier",
                 "value": 0
               }
+            },
+            {
+              "set_variable": {
+                "name": "h_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "j_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "k_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "l_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "u_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "d_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "1_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "2_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "3_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "4_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "5_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "6_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "7_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "8_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "9_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "0_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "hyphen_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "equal_sign_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "backslash_pressed_once",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "grave_accent_and_tilde_pressed_once",
+                "value": 0
+              }
             }
           ],
           "parameters": {
             "basic.to_if_held_down_threshold_milliseconds": 150
           }
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "h_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_h",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "j_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_j",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "down_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "k_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_k",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "up_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "l_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_l",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "u_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_u",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "page_up"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "d_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_d",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "page_down"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "1_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_1",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f1"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "2_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_2",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f2"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "3_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_3",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f3"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "4_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_4",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f4"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "5_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_5",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f5"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "6_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_6",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f6"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "7",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "7_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_7",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f7"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "8",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "8_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_8",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f8"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "9",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "9_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_9",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f9"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "0_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_0",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f10"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "hyphen_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_hyphen",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f11"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "equal_sign",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "equal_sign_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_equal_sign",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "f12"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "backslash_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_backslash",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "insert"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "grave_accent_and_tilde",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "grave_accent_and_tilde_pressed_once",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_grave_accent_and_tilde",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "delete_forward"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "page_up"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "page_down"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f1"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f2"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f3"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f4"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f5"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f6"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "7",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f7"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "8",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f8"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "9",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f9"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f10"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f11"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "equal_sign",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "f12"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "backslash",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "insert"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "grave_accent_and_tilde",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 1
+            }
+          ],
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ]
         },
         {
           "type": "basic",
@@ -976,6 +3083,65 @@
                 "name": "queued_d",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "d_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_d",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "page_down"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "page_down",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_d",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -989,7 +3155,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -1156,6 +3325,65 @@
                 "name": "queued_h",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "h_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_h",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "left_arrow",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_h",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -1169,7 +3397,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -1218,6 +3449,65 @@
                 "name": "queued_j",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "j_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_j",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "down_arrow",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_j",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -1231,7 +3521,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -1249,6 +3542,65 @@
                 "name": "queued_k",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "k_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_k",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "up_arrow",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_k",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -1262,7 +3614,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -1280,6 +3635,65 @@
                 "name": "queued_l",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "l_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_l",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "right_arrow",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_l",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -1293,7 +3707,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -1820,6 +4237,65 @@
                 "name": "queued_u",
                 "value": 1
               }
+            },
+            {
+              "set_variable": {
+                "name": "u_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_u",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "page_up"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "page_up",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_u",
+                "value": 0
+              }
             }
           ],
           "conditions": [
@@ -1833,7 +4309,10 @@
               "name": "f_was_modifier",
               "value": 0
             }
-          ]
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
@@ -2111,6 +4590,37 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "queued_return_or_enter",
+                "value": 1
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "comma",
             "modifiers": {
               "optional": [
@@ -2328,144 +4838,101 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "h",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_arrow"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "j",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "down_arrow"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "k",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "up_arrow"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "l",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "right_arrow"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "u",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "page_up"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "page_down"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
             "key_code": "1",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
             }
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "queued_1",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "1_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_1",
+                "value": 0
+              }
+            },
             {
               "key_code": "f1"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f1",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_1",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "2",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2473,18 +4940,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_2",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "2_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_2",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f2"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f2",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_2",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "3",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2492,18 +5033,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_3",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "3_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_3",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f3"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f3",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_3",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2511,18 +5126,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_4",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "4_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_4",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f4"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f4",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_4",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "5",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2530,18 +5219,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_5",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "5_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_5",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f5"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f5",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_5",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "6",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2549,18 +5312,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_6",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "6_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_6",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f6"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f6",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_6",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "7",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2568,18 +5405,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_7",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "7_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_7",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f7"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f7",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_7",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "8",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2587,18 +5498,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_8",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "8_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_8",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f8"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f8",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_8",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "9",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2606,18 +5591,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_9",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "9_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_9",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f9"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f9",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_9",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "0",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2625,18 +5684,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_0",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "0_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_0",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f10"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f10",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_0",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "hyphen",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2644,18 +5777,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_hyphen",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "hyphen_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_hyphen",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f11"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f11",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_hyphen",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "equal_sign",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2663,18 +5870,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_equal_sign",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "equal_sign_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_equal_sign",
+                "value": 0
+              }
+            },
+            {
               "key_code": "f12"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "f12",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_equal_sign",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "backslash",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2682,18 +5963,92 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_backslash",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "backslash_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_backslash",
+                "value": 0
+              }
+            },
+            {
               "key_code": "insert"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "insert",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_backslash",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         },
         {
           "type": "basic",
           "from": {
             "key_code": "grave_accent_and_tilde",
             "modifiers": {
-              "mandatory": [
-                "right_option"
-              ],
               "optional": [
                 "any"
               ]
@@ -2701,9 +6056,86 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "queued_grave_accent_and_tilde",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "grave_accent_and_tilde_pressed_once",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
+                "name": "queued_grave_accent_and_tilde",
+                "value": 0
+              }
+            },
+            {
               "key_code": "delete_forward"
             }
-          ]
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "delete_forward",
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                },
+                {
+                  "type": "variable_if",
+                  "name": "f_was_modifier",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "f_was_modifier",
+                "value": 1
+              },
+              "conditions": [
+                {
+                  "type": "variable_if",
+                  "name": "f_pressed",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "queued_grave_accent_and_tilde",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "f_pressed",
+              "value": 1
+            },
+            {
+              "type": "variable_if",
+              "name": "f_was_modifier",
+              "value": 0
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 160
+          }
         }
       ]
     }

@@ -249,7 +249,10 @@ EDGE CASES SOLVED
 CONFIGURATION CONSTANTS
 -----------------------
 
-- TAPPING_TERM_MS: Configurable delay before tap becomes hold (see constant definition)
+- TAPPING_TERM_MS: Configurable delay before F tap becomes hold (default: 150ms)
+- VIM_KEY_HOLD_MS: Threshold for vim key hold-to-activate (default: TAPPING_TERM_MS + 50ms = 200ms)
+  - Defined relative to TAPPING_TERM_MS for consistency
+  - No technical constraint, but longer threshold provides more deliberate feel
 - MULTI_SLOT_COUNT: 3 slots for commonly doubled letters
 - MULTI_SLOT_KEYS: ['e', 'o', 'p', 's', 'z'] (letters frequently doubled in aki_null usage)
 
@@ -321,6 +324,20 @@ from typing import List, Dict, Any
 # - Higher values (150-200ms): More forgiving for fast typing, slower vim layer activation
 TAPPING_TERM_MS = 150
 
+# Vim key hold threshold offset: How much longer to hold a vim key to activate vim mode
+# This enables "hold to activate" behavior: Hold F → Hold J (for TAPPING_TERM_MS + offset) → arrows start
+#
+# NOTE: There's no technical constraint requiring this to be longer than TAPPING_TERM_MS.
+# However, making it slightly longer provides better UX:
+# - Feels more deliberate/intentional (you're choosing to hold, not just typing slowly)
+# - Reduces accidental activation during fast typing
+# - Makes the two timing behaviors feel perceptually distinct
+#
+# - Lower values (0-30ms): Very responsive, minimal difference from TAPPING_TERM_MS
+# - Medium values (50ms, default): Good balance between responsiveness and deliberateness
+# - Higher values (100ms+): Very deliberate hold required, safest for fast typing
+VIM_KEY_HOLD_MS = TAPPING_TERM_MS + 10
+
 # Keys that need multi-slot queuing (commonly doubled letters)
 # These are letters that frequently appear doubled in English words: "see", "too", "happy", etc.
 # Each gets 3 slots so fast typing like "foo" queues both 'o's separately
@@ -342,15 +359,19 @@ VIM_NAV_KEYS = ['h', 'j', 'k', 'l', 'u', 'd']
 QUEUE_KEYS = ALL_ALPHA_KEYS
 
 # Additional non-alphabet keys to queue during tapping window
-# CRITICAL: spacebar must be queued to prevent "diff " → "dif f"
-# When typing fast, space can be pressed while F is still held from previous letter
-# Excludes: numbers (0-9), hyphen, equals, backtick, backslash
-#   → These are used in vim layer for F1-F12 mappings, must pass through
+# CRITICAL: spacebar and enter must be queued to prevent "diff " → "dif f" and "diff\n" → "dif\nf"
+# When typing fast, these keys can be pressed while F is still held from previous letter
+# NOW INCLUDES: Function keys (numbers, hyphen, equals, backtick, backslash)
+#   → With event-based activation, these also need to be queued and use second-press activation
 ADDITIONAL_QUEUE_KEYS = [
     'spacebar',                    # Most important! Prevents "diff " bug
+    'return_or_enter',             # Prevents "diff\n" → "dif\nf" bug
     'comma', 'period', 'slash',    # Common punctuation
     'semicolon', 'quote',          # Code-related punctuation
-    'open_bracket', 'close_bracket'  # Brackets
+    'open_bracket', 'close_bracket',  # Brackets
+    # Function key mappings (for F1-F12, insert, delete)
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    'hyphen', 'equal_sign', 'backslash', 'grave_accent_and_tilde'
 ]
 
 # =============================================================================
@@ -388,6 +409,9 @@ VIM_LAYER_FKEY_MAPPINGS = {
     'backslash': 'insert',              # F + backslash → Insert
     'grave_accent_and_tilde': 'delete_forward'  # F + backtick → Delete (not backspace!)
 }
+
+# Extract list of vim function keys for event-based activation
+VIM_FKEY_KEYS = list(VIM_LAYER_FKEY_MAPPINGS.keys())
 
 
 def create_basic_manipulator(
@@ -430,7 +454,7 @@ def create_basic_manipulator(
 def create_ctrl_rule() -> Dict[str, Any]:
     """Create left control rule: hold for Ctrl, tap for Esc (using lazy modifier)."""
     return {
-        "description": f"Left Control: Hold for Ctrl, Tap for Esc ({TAPPING_TERM_MS}ms, lazy modifier)",
+        "description": f"Left Control: Hold for Ctrl, Tap for Esc ({TAPPING_TERM_MS}ms)",
         "manipulators": [
             create_basic_manipulator(
                 from_key="left_control",
@@ -459,7 +483,7 @@ def create_shift_rule(side: str, keycode: str) -> Dict[str, Any]:
     key_num = "9" if side == "left" else "0"
 
     return {
-        "description": f"{side.capitalize()} Shift: Hold for Shift, Tap for {paren} ({TAPPING_TERM_MS}ms, TMK behavior)",
+        "description": f"{side.capitalize()} Shift: Hold for Shift, Tap for {paren} ({TAPPING_TERM_MS}ms)",
         "manipulators": [
             create_basic_manipulator(
                 from_key=shift_key,
@@ -481,19 +505,21 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
     1. Immediately (to): Set f_pressed=1, f_tapping=1
        - These enable queue manipulators (other keys get queued instead of output)
 
-    2. After tapping term (to_if_held_down): Set f_was_modifier=1, output right_option
+    2. After tapping term (to_if_held_down): Set f_was_modifier=1
+       - CRITICAL: Uses to_if_held_down NOT to_delayed_action!
+       - to_delayed_action gets CANCELED when OTHER manipulators match during hold
+       - to_if_held_down only cancels if F itself is released early
        - This disables queue manipulators (f_was_modifier=0 condition fails)
-       - This enables vim layer (right_option modifier becomes active)
-       - F is now a real modifier key, enabling OS key repeat!
+       - This enables vim layer (f_was_modifier=1 condition succeeds)
 
     3. On F release (to_after_key_up):
        - Replay 'f' if it was just a tap (f_was_modifier=0)
-       - Replay all queued keys in order
+       - Replay all queued keys in order (only if f_was_modifier=0)
        - Clear all state variables
 
     The f_was_modifier variable is KEY: it distinguishes between:
     - Tapping window (0): queue all keys, output 'f' on release
-    - Modifier mode (1): F is right_option, don't output 'f' on release
+    - Vim layer mode (1): F enables vim layer, don't output 'f' or queued keys
     """
     # Build the to_after_key_up array
     to_after_key_up = []
@@ -505,7 +531,7 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
         "conditions": [{"type": "variable_if", "name": "f_was_modifier", "value": 0}]
     })
 
-    # Replay queued alphabet keys
+    # Replay queued alphabet keys (ONLY if F was tapped, not used as modifier)
     for key in QUEUE_KEYS:
         if key in MULTI_SLOT_KEYS:
             # Multi-slot keys have 3 slots
@@ -513,7 +539,10 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
                 var_name = f"queued_{key}_{slot}"
                 to_after_key_up.append({
                     "key_code": key,
-                    "conditions": [{"type": "variable_if", "name": var_name, "value": 1}]
+                    "conditions": [
+                        {"type": "variable_if", "name": var_name, "value": 1},
+                        {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+                    ]
                 })
                 to_after_key_up.append({
                     "set_variable": {"name": var_name, "value": 0}
@@ -523,18 +552,24 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
             var_name = f"queued_{key}"
             to_after_key_up.append({
                 "key_code": key,
-                "conditions": [{"type": "variable_if", "name": var_name, "value": 1}]
+                "conditions": [
+                    {"type": "variable_if", "name": var_name, "value": 1},
+                    {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+                ]
             })
             to_after_key_up.append({
                 "set_variable": {"name": var_name, "value": 0}
             })
 
-    # Replay queued additional keys (space, punctuation)
+    # Replay queued additional keys (space, punctuation) (ONLY if F was tapped)
     for key in ADDITIONAL_QUEUE_KEYS:
         var_name = f"queued_{key}"
         to_after_key_up.append({
             "key_code": key,
-            "conditions": [{"type": "variable_if", "name": var_name, "value": 1}]
+            "conditions": [
+                {"type": "variable_if", "name": var_name, "value": 1},
+                {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+            ]
         })
         to_after_key_up.append({
             "set_variable": {"name": var_name, "value": 0}
@@ -544,6 +579,12 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
     for var in ["f_tapping", "f_pressed", "f_was_modifier"]:
         to_after_key_up.append({"set_variable": {"name": var, "value": 0}})
 
+    # Clean up pressed_once flags for vim nav keys and function keys
+    for key in VIM_NAV_KEYS:
+        to_after_key_up.append({"set_variable": {"name": f"{key}_pressed_once", "value": 0}})
+    for key in VIM_FKEY_KEYS:
+        to_after_key_up.append({"set_variable": {"name": f"{key}_pressed_once", "value": 0}})
+
     return create_basic_manipulator(
         from_key="f",
         to=[
@@ -552,15 +593,14 @@ def create_f_key_main_manipulator() -> Dict[str, Any]:
         ],
         to_if_held_down=[
             {"set_variable": {"name": "f_tapping", "value": 0}},
-            {"set_variable": {"name": "f_was_modifier", "value": 1}},
-            {"key_code": "right_option"}  # F becomes right_option when held
+            {"set_variable": {"name": "f_was_modifier", "value": 1}}
         ],
         to_after_key_up=to_after_key_up,
         parameters={"basic.to_if_held_down_threshold_milliseconds": TAPPING_TERM_MS}
     )
 
 
-def create_queue_manipulator(key: str, slot: int = None) -> Dict[str, Any]:
+def create_queue_manipulator(key: str, slot: int = None, to_if_held_down: List[Dict[str, Any]] = None, to_after_key_up: List[Dict[str, Any]] = None, parameters: Dict[str, int] = None) -> Dict[str, Any]:
     """Create a queue manipulator for a single key (with optional slot number).
 
     Queue manipulators intercept keys during the F tapping window and set queue
@@ -578,6 +618,19 @@ def create_queue_manipulator(key: str, slot: int = None) -> Dict[str, Any]:
     - slot 3: queued_X_3=1 (only if slot 2 already set)
 
     This allows typing "foo" fast with F held: both 'o's get queued in separate slots.
+
+    **SPECIAL BEHAVIOR FOR VIM KEYS**:
+    For vim nav keys (h,j,k,l,u,d) and function keys (1-9,0,-,=, etc.), also set a
+    "pressed_once" flag. This enables event-based vim mode activation: pressing a vim
+    key TWICE while F is held activates vim mode immediately, bypassing the timing issue.
+
+    Additionally, vim keys can use:
+    1. to_if_held_down: activate vim mode by HOLDING the key (VIM_KEY_HOLD_MS threshold)
+    2. to_after_key_up: activate vim mode when RELEASING the key (if F still held and vim not active)
+
+    This allows multiple activation methods:
+    - Hold F → Hold J (VIM_KEY_HOLD_MS) → arrows repeat (hold-to-activate)
+    - Hold F → Press J → Release J (while F held) → output arrow once (release-to-activate)
     """
     conditions = [
         {"type": "variable_if", "name": "f_pressed", "value": 1},       # F is held
@@ -585,6 +638,11 @@ def create_queue_manipulator(key: str, slot: int = None) -> Dict[str, Any]:
     ]
 
     var_name = f"queued_{key}"
+    to_actions = [{"set_variable": {"name": var_name, "value": 1}}]
+
+    # For vim nav keys and function keys, also set a "pressed_once" flag for event-based activation
+    if key in VIM_NAV_KEYS or key in VIM_FKEY_KEYS:
+        to_actions.append({"set_variable": {"name": f"{key}_pressed_once", "value": 1}})
 
     if slot is not None:
         # Multi-slot key
@@ -597,49 +655,101 @@ def create_queue_manipulator(key: str, slot: int = None) -> Dict[str, Any]:
         # Check this slot is empty
         conditions.append({"type": "variable_if", "name": var_name, "value": 0})
 
+        # Update to_actions for multi-slot
+        to_actions = [{"set_variable": {"name": var_name, "value": 1}}]
+        if key in VIM_NAV_KEYS or key in VIM_FKEY_KEYS:
+            to_actions.append({"set_variable": {"name": f"{key}_pressed_once", "value": 1}})
+
     return create_basic_manipulator(
         from_key=key,
         conditions=conditions,
-        to=[{"set_variable": {"name": var_name, "value": 1}}]
+        to=to_actions,
+        to_if_held_down=to_if_held_down,
+        to_after_key_up=to_after_key_up,
+        parameters=parameters
     )
 
 
-def create_vim_layer_manipulator_with_modifier(key: str, target_key: str) -> Dict[str, Any]:
-    """Create a vim layer manipulator using F as a real modifier.
+def create_vim_second_press_activator(key: str, target_key: str) -> Dict[str, Any]:
+    """Create a manipulator that activates vim mode on SECOND press of a vim key.
 
-    **CRITICAL INSIGHT**: This approach supports OS key repeat!
+    **THE BREAKTHROUGH**: Since both to_if_held_down and to_delayed_action get CANCELED
+    when other manipulators match, we can't use timing-based vim mode activation.
 
-    Why this works:
-    - F held for tapping term -> outputs right_option (a real modifier)
-    - J pressed with right_option held -> Karabiner matches this manipulator
-    - J held -> OS generates repeat events: "right_option + J" repeatedly
-    - Each repeat event matches this manipulator again -> down_arrow repeats!
+    **NEW APPROACH - Event-based activation**:
+    When a vim key (nav or function) is pressed the SECOND time while F is held,
+    activate vim mode immediately.
 
-    Why variable conditions DON'T work:
-    - If we used "conditions": [{"variable_if": "vim_layer", "value": 1}]
-    - Each OS repeat event must re-check the condition
-    - This breaks the key repeat mechanism somehow (Karabiner limitation)
+    Conditions:
+    - f_pressed=1: F is physically held
+    - {key}_pressed_once=1: This key was already pressed once (set by queue manipulator)
+    - f_was_modifier=0: Still in tapping window (vim mode not yet active)
 
-    Why simultaneous keys DON'T work:
-    - Simultaneous detection requires keys pressed nearly at the same time
-    - User pattern is: hold F (wait), THEN press J
-    - By the time J is pressed, F was pressed 200ms ago (not simultaneous)
+    Actions:
+    - Set f_was_modifier=1: Activate vim mode
+    - Output target_key: Transform to arrow/page/function key
+    - Clear queued_{key}: Don't replay this key when F is released
 
-    This modifier-based approach is the ONLY way to get key repeat working!
+    This manipulator MUST come BEFORE both the vim layer manipulator and queue manipulator
+    so it catches the second press first.
 
-    The vim nav keys (h, j, k, l, u, d) have TWO manipulators:
-    1. Queue manipulator (when f_was_modifier=0): queues during tapping window
-    2. Vim layer manipulator (when right_option held): transforms to arrow/page key
+    Works for both vim nav keys (j→down_arrow) and function keys (=→f12).
     """
     manipulator = {
         "type": "basic",
         "from": {
             "key_code": key,
-            "modifiers": {
-                "mandatory": ["right_option"],  # F becomes right_option when held
-                "optional": ["any"]             # Allow other modifiers (shift, ctrl, etc.)
-            }
+            "modifiers": {"optional": ["any"]}
         },
+        "conditions": [
+            {"type": "variable_if", "name": "f_pressed", "value": 1},
+            {"type": "variable_if", "name": f"{key}_pressed_once", "value": 1},
+            {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+        ],
+        "to": [
+            {"set_variable": {"name": "f_was_modifier", "value": 1}},  # Activate vim mode NOW
+            {"set_variable": {"name": f"queued_{key}", "value": 0}},   # Clear queue
+            {"key_code": target_key}  # Output arrow/page/function key
+        ]
+    }
+    return manipulator
+
+
+def create_vim_layer_manipulator_with_variables(key: str, target_key: str) -> Dict[str, Any]:
+    """Create a vim layer manipulator using variables (not modifiers).
+
+    **CRITICAL INSIGHT**: We use variables, not modifiers, because Karabiner manipulators
+    cannot see synthesized modifiers from other manipulators! They only see physical modifiers.
+
+    When F outputs right_option via to_if_held_down, other manipulators checking for
+    "modifiers": {"mandatory": ["right_option"]} won't match because they're looking for
+    the PHYSICAL right_option key, not the synthesized one.
+
+    Solution: Check variables directly
+    - f_pressed=1: F key is physically held
+    - f_was_modifier=1: F has passed tapping term and is acting as vim layer
+
+    Key repeat works because:
+    - J is held -> OS generates J repeat events
+    - Each repeat event is checked against conditions
+    - As long as f_pressed=1 and f_was_modifier=1, transformation happens
+    - Result: continuous down_arrow output
+
+    The vim nav keys (h, j, k, l, u, d) have THREE manipulators:
+    1. Second press activator (f_pressed=1, key_pressed_once=1, f_was_modifier=0): activates vim mode
+    2. Vim layer manipulator (f_pressed=1, f_was_modifier=1): transforms to arrow/page key
+    3. Queue manipulator (f_pressed=1, f_was_modifier=0, key_pressed_once=0): queues during tapping window
+    """
+    manipulator = {
+        "type": "basic",
+        "from": {
+            "key_code": key,
+            "modifiers": {"optional": ["any"]}  # Allow any modifiers (shift, ctrl, etc.)
+        },
+        "conditions": [
+            {"type": "variable_if", "name": "f_pressed", "value": 1},
+            {"type": "variable_if", "name": "f_was_modifier", "value": 1}
+        ],
         "to": [
             {"key_code": target_key}
         ]
@@ -658,24 +768,41 @@ def create_f_rule() -> Dict[str, Any]:
     1. Main F key manipulator (MUST be first!)
        - Handles F press/release and state management
 
-    2. Queue manipulators (come before vim layer!)
-       - Alphabet keys (including vim nav keys during tapping window)
-       - Multi-slot keys for doubled letters
-       - Space and punctuation
-       - Only match when: f_pressed=1 AND f_was_modifier=0
+    2. Second press activators for ALL vim keys (NEW!)
+       - Detect when vim key (nav or function) pressed TWICE while F held
+       - Immediately activate vim mode (set f_was_modifier=1)
+       - Bypass timing mechanism entirely (event-based activation)
+       - Applies to nav keys (h,j,k,l,u,d) AND function keys (1-9,0,-,=, etc.)
 
     3. Vim layer manipulators for navigation
-       - Only match when: right_option modifier is held
+       - Match when: f_pressed=1 AND f_was_modifier=1
        - h/j/k/l/u/d -> arrows/page keys
-       - Support key repeat because they use real modifier!
+       - Support key repeat!
 
     4. Vim layer manipulators for function keys
-       - Only match when: right_option modifier is held
+       - Match when: f_pressed=1 AND f_was_modifier=1
        - 1-9,0,-,= -> F1-F12, insert, delete
 
-    The magic: vim nav keys (h,j,k,l,u,d) match DIFFERENT manipulators depending on state:
-    - During tapping window (f_was_modifier=0): Queue manipulator matches
-    - During vim layer (right_option held): Vim layer manipulator matches
+    5. Queue manipulators for all keys
+       - Alphabet keys (including vim nav keys during tapping window)
+       - Multi-slot keys for doubled letters
+       - Space, punctuation, AND function keys
+       - Only match when: f_pressed=1 AND f_was_modifier=0
+
+    The magic: ALL vim keys match DIFFERENT manipulators depending on state and action:
+    - First press during tapping window: Queue manipulator matches, sets key_pressed_once=1
+    - Second press (tap again): Second press activator matches, activates vim mode immediately
+    - First press HELD (hold for VIM_KEY_HOLD_MS): Queue manipulator's to_if_held_down fires, activates vim mode
+    - First press RELEASED (while F held): Queue manipulator's to_after_key_up fires, activates vim mode
+    - Subsequent presses (after vim mode active): Vim layer manipulator matches
+
+    This provides THREE ways to activate vim mode (all work reliably):
+    1. Hold F → Press J twice → Arrows (second-press activation)
+    2. Hold F → Hold J (VIM_KEY_HOLD_MS) → Arrows start repeating (hold-to-activate)
+    3. Hold F → Press J → Release J (while F held) → Output arrow once (release-to-activate)
+
+    Note: Original TMK timing-based activation (Hold F 150ms then J) doesn't work due to Karabiner
+    limitation where to_if_held_down/to_delayed_action cancel when other manipulators match.
     """
     manipulators = []
 
@@ -683,8 +810,27 @@ def create_f_rule() -> Dict[str, Any]:
     #    This sets up all the state variables and handles F press/release
     manipulators.append(create_f_key_main_manipulator())
 
-    # 2. Queue manipulators for alphabet keys (ALL keys including vim nav)
+    # 2. Second press activators for vim keys - MUST come before vim layer and queue!
+    #    These catch the SECOND press of a vim key and activate vim mode immediately
+    #    This is the KEY FIX for the timing issue
+    for key, arrow_key in VIM_LAYER_NAV_MAPPINGS.items():
+        manipulators.append(create_vim_second_press_activator(key, arrow_key))
+    for key, fkey in VIM_LAYER_FKEY_MAPPINGS.items():
+        manipulators.append(create_vim_second_press_activator(key, fkey))
+
+    # 3. Vim layer manipulators for navigation (h/j/k/l/u/d -> arrows/page)
+    #    These handle subsequent presses after vim mode is active
+    for key, arrow_key in VIM_LAYER_NAV_MAPPINGS.items():
+        manipulators.append(create_vim_layer_manipulator_with_variables(key, arrow_key))
+
+    # 4. Vim layer manipulators for function keys (number row -> F1-F12)
+    #    These also use variable conditions (f_pressed=1, f_was_modifier=1)
+    for key, fkey in VIM_LAYER_FKEY_MAPPINGS.items():
+        manipulators.append(create_vim_layer_manipulator_with_variables(key, fkey))
+
+    # 5. Queue manipulators for alphabet keys (ALL keys including vim nav)
     #    These intercept keys during the tapping window (f_was_modifier=0)
+    #    NOTE: These come AFTER vim layer manipulators, so vim layer takes precedence when active
     for key in QUEUE_KEYS:
         if key in MULTI_SLOT_KEYS:
             # Create multi-slot manipulators for commonly doubled letters
@@ -693,26 +839,67 @@ def create_f_rule() -> Dict[str, Any]:
                 manipulators.append(create_queue_manipulator(key, slot))
         else:
             # Create single-slot manipulator
-            manipulators.append(create_queue_manipulator(key))
+            # For vim nav keys, add to_if_held_down and to_after_key_up to activate vim mode
+            if key in VIM_NAV_KEYS:
+                target_arrow = VIM_LAYER_NAV_MAPPINGS[key]
+                to_if_held_down = [
+                    {"set_variable": {"name": "f_was_modifier", "value": 1}},  # Activate vim mode
+                    {"set_variable": {"name": f"queued_{key}", "value": 0}},   # Clear queue
+                    {"key_code": target_arrow}  # Output arrow/page key
+                ]
+                to_after_key_up = [
+                    # Only fire if F still held and vim mode not activated yet
+                    {"key_code": target_arrow, "conditions": [
+                        {"type": "variable_if", "name": "f_pressed", "value": 1},
+                        {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+                    ]},
+                    {"set_variable": {"name": "f_was_modifier", "value": 1}, "conditions": [
+                        {"type": "variable_if", "name": "f_pressed", "value": 1}
+                    ]},
+                    {"set_variable": {"name": f"queued_{key}", "value": 0}}  # Clear queue
+                ]
+                manipulators.append(create_queue_manipulator(
+                    key,
+                    to_if_held_down=to_if_held_down,
+                    to_after_key_up=to_after_key_up,
+                    parameters={"basic.to_if_held_down_threshold_milliseconds": VIM_KEY_HOLD_MS}
+                ))
+            else:
+                manipulators.append(create_queue_manipulator(key))
 
-    # 2b. Queue manipulators for additional keys (space, punctuation)
+    # 6. Queue manipulators for additional keys (space, punctuation, function keys)
     #     CRITICAL: Space must be queued to prevent "diff " -> "dif f"
     for key in ADDITIONAL_QUEUE_KEYS:
-        manipulators.append(create_queue_manipulator(key))
-
-    # 3. Vim layer manipulators for navigation (h/j/k/l/u/d -> arrows/page)
-    #    These use right_option as mandatory modifier for key repeat support
-    #    NOTE: These come AFTER queue manipulators, so queue takes precedence during tapping
-    for key, arrow_key in VIM_LAYER_NAV_MAPPINGS.items():
-        manipulators.append(create_vim_layer_manipulator_with_modifier(key, arrow_key))
-
-    # 4. Vim layer manipulators for function keys (number row -> F1-F12)
-    #    These also use right_option as mandatory modifier
-    for key, fkey in VIM_LAYER_FKEY_MAPPINGS.items():
-        manipulators.append(create_vim_layer_manipulator_with_modifier(key, fkey))
+        # For vim function keys, add to_if_held_down and to_after_key_up to activate vim mode
+        if key in VIM_FKEY_KEYS:
+            target_fkey = VIM_LAYER_FKEY_MAPPINGS[key]
+            to_if_held_down = [
+                {"set_variable": {"name": "f_was_modifier", "value": 1}},  # Activate vim mode
+                {"set_variable": {"name": f"queued_{key}", "value": 0}},   # Clear queue
+                {"key_code": target_fkey}  # Output function key
+            ]
+            to_after_key_up = [
+                # Only fire if F still held and vim mode not activated yet
+                {"key_code": target_fkey, "conditions": [
+                    {"type": "variable_if", "name": "f_pressed", "value": 1},
+                    {"type": "variable_if", "name": "f_was_modifier", "value": 0}
+                ]},
+                {"set_variable": {"name": "f_was_modifier", "value": 1}, "conditions": [
+                    {"type": "variable_if", "name": "f_pressed", "value": 1}
+                ]},
+                {"set_variable": {"name": f"queued_{key}", "value": 0}}  # Clear queue
+            ]
+            manipulators.append(create_queue_manipulator(
+                key,
+                to_if_held_down=to_if_held_down,
+                to_after_key_up=to_after_key_up,
+                parameters={"basic.to_if_held_down_threshold_milliseconds": VIM_KEY_HOLD_MS}
+            ))
+        else:
+            manipulators.append(create_queue_manipulator(key))
 
     return {
-        "description": "F key Vim layer with waiting buffer (F becomes modifier for key repeat support)",
+        "description": "F key Vim layer",
         "manipulators": manipulators
     }
 
